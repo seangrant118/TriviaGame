@@ -28,6 +28,10 @@ $(document).ready(function () {
     intervalId = setInterval(decrement, 1000);
   }
 
+  function stop() {
+    clearInterval(intervalId);
+  }
+
   function incorrectFunction() {
     timer = 5;
     incorrect++;
@@ -35,6 +39,9 @@ $(document).ready(function () {
     run();
     $("#result").text("INCORRECT!");
     $("#questions").text("");
+    if (timer === 0) {
+      stop();
+    }
   };
 
   function correctFunction() {
@@ -44,6 +51,9 @@ $(document).ready(function () {
     run();
     $("#result").text("CORRECT!");
     $("#questions").text("");
+    if (timer === 0) {
+      stop();
+    }
   };
 
   function unansweredFunction() {
@@ -72,6 +82,7 @@ $(document).ready(function () {
       incorrectFunction();
     });
     if (timer <= 0) {
+      stop();
       unansweredFunction();
     }
   });
