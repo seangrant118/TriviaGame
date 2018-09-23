@@ -70,6 +70,10 @@ $(document).ready(function () {
     // write the time remaining to the page
     $("#time-remaining").text("Time Remaining: " + timer);
     run();
+    if (timer === 0) {
+      stop();
+      unansweredFunction();
+    }
     // write the questions and answers to the page
     $("#questions").text(questions[0]);
     $("#questions").append("<div class='incorrect'>" + incorrectAnswers[0] + "</div>");
@@ -81,10 +85,7 @@ $(document).ready(function () {
     $(".incorrect").on("click", function () {
       incorrectFunction();
     });
-    if (timer <= 0) {
-      stop();
-      unansweredFunction();
-    }
+    
   });
 
 
